@@ -4,7 +4,9 @@
 
 ## Download
 
-[Download the updated APK from Google Drive](https://drive.google.com/file/d/1vU5uULVXUnrncHnd2VjO4Pe_obNKDo20/view?usp=drivesdk) (the owner's Google account may be required). Android 8/API 26 or later is required, including Android 16.
+**[Download DayBudget 0.2 APK](https://github.com/souravsamaddar77-eng/daily-budget-manager/releases/download/v0.2.0/DayBudget-debug.apk)** · [SHA-256 checksum](https://github.com/souravsamaddar77-eng/daily-budget-manager/releases/download/v0.2.0/DayBudget-debug.apk.sha256) · [Release notes](https://github.com/souravsamaddar77-eng/daily-budget-manager/releases/tag/v0.2.0)
+
+Open the APK link directly on your Android phone. This is a 13 MB debug build for Android 8/API 26 or later, including Android 16. Android may ask you to allow installation from the browser or file app used to open it.
 
 The app uses `dev.daybudget.debug`. Installing this update over the preceding DayBudget debug build preserves records when Android accepts the same signing certificate. **Do not uninstall the old app to update it:** uninstalling removes local records. Installation on a phone is your manual action; development testing uses emulators.
 

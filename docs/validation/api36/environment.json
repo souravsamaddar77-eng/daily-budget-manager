@@ -1,0 +1,9 @@
+{
+  "serial": "emulator-5584",
+  "api": 36,
+  "release": "16",
+  "fingerprint": "Android/sdk_phone64_x86_64/emu64x:16/BE2A.250530.026.D1/13818094:userdebug/test-keys",
+  "emulator": true,
+  "adb_port": 5039,
+  "page_size": "4096"
+}

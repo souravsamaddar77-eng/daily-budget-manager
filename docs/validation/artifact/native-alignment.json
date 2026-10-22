@@ -1,0 +1,245 @@
+{
+  "apk": "app-debug.apk",
+  "sha256": "e2d62be8f4f9a0e36744ac8337601595de496db1dbd73936ed98e01c62afb9d0",
+  "bytes": 13015677,
+  "page_size_bytes": 16384,
+  "scope": "static ZIP and ELF checks only",
+  "runtime_validation": "Not assessed by this script; test on a device with PAGE_SIZE=16384.",
+  "official_guidance": "https://developer.android.com/guide/practices/page-sizes",
+  "native_library_count": 4,
+  "libraries": [
+    {
+      "path": "lib/arm64-v8a/libandroidx.graphics.path.so",
+      "elf_bits": 64,
+      "zip_stored_uncompressed": true,
+      "zip_data_offset": 12058624,
+      "zip_data_offset_aligned_16kb": true,
+      "zip_alignment_requirement_passed": true,
+      "pt_load_segments": [
+        {
+          "type": "PT_LOAD",
+          "offset": 0,
+          "virtual_address": 0,
+          "file_size": 7232,
+          "memory_size": 7232,
+          "flags": 5,
+          "alignment": 16384,
+          "alignment_at_least_16kb": true,
+          "offset_virtual_congruent_16kb": true
+        },
+        {
+          "type": "PT_LOAD",
+          "offset": 7232,
+          "virtual_address": 23616,
+          "file_size": 912,
+          "memory_size": 912,
+          "flags": 6,
+          "alignment": 16384,
+          "alignment_at_least_16kb": true,
+          "offset_virtual_congruent_16kb": true
+        },
+        {
+          "type": "PT_LOAD",
+          "offset": 8144,
+          "virtual_address": 40912,
+          "file_size": 0,
+          "memory_size": 16,
+          "flags": 6,
+          "alignment": 16384,
+          "alignment_at_least_16kb": true,
+          "offset_virtual_congruent_16kb": true
+        }
+      ],
+      "relro_segments": [
+        {
+          "type": "PT_GNU_RELRO",
+          "offset": 7232,
+          "virtual_address": 23616,
+          "file_size": 912,
+          "memory_size": 960,
+          "flags": 4,
+          "alignment": 1,
+          "end_aligned_16kb": false,
+          "rounded_protection_overlaps_other_writable_bytes": false
+        }
+      ],
+      "elf_load_alignment_passed": true,
+      "relro_layout_check_passed": true
+    },
+    {
+      "path": "lib/armeabi-v7a/libandroidx.graphics.path.so",
+      "elf_bits": 32,
+      "zip_stored_uncompressed": true,
+      "zip_data_offset": 12075008,
+      "zip_data_offset_aligned_16kb": true,
+      "zip_alignment_requirement_passed": true,
+      "pt_load_segments": [
+        {
+          "type": "PT_LOAD",
+          "offset": 0,
+          "virtual_address": 0,
+          "file_size": 5312,
+          "memory_size": 5312,
+          "flags": 5,
+          "alignment": 16384,
+          "alignment_at_least_16kb": true,
+          "offset_virtual_congruent_16kb": true
+        },
+        {
+          "type": "PT_LOAD",
+          "offset": 5312,
+          "virtual_address": 21696,
+          "file_size": 460,
+          "memory_size": 460,
+          "flags": 6,
+          "alignment": 16384,
+          "alignment_at_least_16kb": true,
+          "offset_virtual_congruent_16kb": true
+        },
+        {
+          "type": "PT_LOAD",
+          "offset": 5772,
+          "virtual_address": 38540,
+          "file_size": 0,
+          "memory_size": 8,
+          "flags": 6,
+          "alignment": 16384,
+          "alignment_at_least_16kb": true,
+          "offset_virtual_congruent_16kb": true
+        }
+      ],
+      "relro_segments": [
+        {
+          "type": "PT_GNU_RELRO",
+          "offset": 5312,
+          "virtual_address": 21696,
+          "file_size": 460,
+          "memory_size": 2880,
+          "flags": 4,
+          "alignment": 1,
+          "end_aligned_16kb": false,
+          "rounded_protection_overlaps_other_writable_bytes": false
+        }
+      ],
+      "elf_load_alignment_passed": true,
+      "relro_layout_check_passed": true
+    },
+    {
+      "path": "lib/x86/libandroidx.graphics.path.so",
+      "elf_bits": 32,
+      "zip_stored_uncompressed": true,
+      "zip_data_offset": 12091392,
+      "zip_data_offset_aligned_16kb": true,
+      "zip_alignment_requirement_passed": true,
+      "pt_load_segments": [
+        {
+          "type": "PT_LOAD",
+          "offset": 0,
+          "virtual_address": 0,
+          "file_size": 7456,
+          "memory_size": 7456,
+          "flags": 5,
+          "alignment": 16384,
+          "alignment_at_least_16kb": true,
+          "offset_virtual_congruent_16kb": true
+        },
+        {
+          "type": "PT_LOAD",
+          "offset": 7456,
+          "virtual_address": 23840,
+          "file_size": 456,
+          "memory_size": 456,
+          "flags": 6,
+          "alignment": 16384,
+          "alignment_at_least_16kb": true,
+          "offset_virtual_congruent_16kb": true
+        },
+        {
+          "type": "PT_LOAD",
+          "offset": 7912,
+          "virtual_address": 40680,
+          "file_size": 0,
+          "memory_size": 8,
+          "flags": 6,
+          "alignment": 16384,
+          "alignment_at_least_16kb": true,
+          "offset_virtual_congruent_16kb": true
+        }
+      ],
+      "relro_segments": [
+        {
+          "type": "PT_GNU_RELRO",
+          "offset": 7456,
+          "virtual_address": 23840,
+          "file_size": 456,
+          "memory_size": 736,
+          "flags": 4,
+          "alignment": 1,
+          "end_aligned_16kb": false,
+          "rounded_protection_overlaps_other_writable_bytes": false
+        }
+      ],
+      "elf_load_alignment_passed": true,
+      "relro_layout_check_passed": true
+    },
+    {
+      "path": "lib/x86_64/libandroidx.graphics.path.so",
+      "elf_bits": 64,
+      "zip_stored_uncompressed": true,
+      "zip_data_offset": 12107776,
+      "zip_data_offset_aligned_16kb": true,
+      "zip_alignment_requirement_passed": true,
+      "pt_load_segments": [
+        {
+          "type": "PT_LOAD",
+          "offset": 0,
+          "virtual_address": 0,
+          "file_size": 7872,
+          "memory_size": 7872,
+          "flags": 5,
+          "alignment": 16384,
+          "alignment_at_least_16kb": true,
+          "offset_virtual_congruent_16kb": true
+        },
+        {
+          "type": "PT_LOAD",
+          "offset": 7872,
+          "virtual_address": 24256,
+          "file_size": 936,
+          "memory_size": 936,
+          "flags": 6,
+          "alignment": 16384,
+          "alignment_at_least_16kb": true,
+          "offset_virtual_congruent_16kb": true
+        },
+        {
+          "type": "PT_LOAD",
+          "offset": 8808,
+          "virtual_address": 41576,
+          "file_size": 0,
+          "memory_size": 16,
+          "flags": 6,
+          "alignment": 16384,
+          "alignment_at_least_16kb": true,
+          "offset_virtual_congruent_16kb": true
+        }
+      ],
+      "relro_segments": [
+        {
+          "type": "PT_GNU_RELRO",
+          "offset": 7872,
+          "virtual_address": 24256,
+          "file_size": 936,
+          "memory_size": 4416,
+          "flags": 4,
+          "alignment": 1,
+          "end_aligned_16kb": false,
+          "rounded_protection_overlaps_other_writable_bytes": false
+        }
+      ],
+      "elf_load_alignment_passed": true,
+      "relro_layout_check_passed": true
+    }
+  ],
+  "all_static_alignment_checks_passed": true
+}

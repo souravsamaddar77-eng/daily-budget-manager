@@ -1,0 +1,587 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "9f5bfd4320f4b9fea05da9ff36903cc9",
+    "entities": [
+      {
+        "tableName": "budget_settings",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`singleton` INTEGER NOT NULL, `zoneId` TEXT NOT NULL, `activatedAt` TEXT NOT NULL, `activationDate` TEXT NOT NULL, `usualMonthlyBudget` INTEGER, `futureZoneId` TEXT, `futureZoneEffectiveMonth` TEXT, PRIMARY KEY(`singleton`))",
+        "fields": [
+          {
+            "fieldPath": "singleton",
+            "columnName": "singleton",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "zoneId",
+            "columnName": "zoneId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "activatedAt",
+            "columnName": "activatedAt",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "activationDate",
+            "columnName": "activationDate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "usualMonthlyBudget",
+            "columnName": "usualMonthlyBudget",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "futureZoneId",
+            "columnName": "futureZoneId",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "futureZoneEffectiveMonth",
+            "columnName": "futureZoneEffectiveMonth",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "singleton"
+          ]
+        }
+      },
+      {
+        "tableName": "budget_periods",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `start` TEXT NOT NULL, `end` TEXT NOT NULL, `zoneId` TEXT NOT NULL, `openingAmount` INTEGER NOT NULL, `budgetConfigured` INTEGER NOT NULL, `activatedAt` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "start",
+            "columnName": "start",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "end",
+            "columnName": "end",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "zoneId",
+            "columnName": "zoneId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "openingAmount",
+            "columnName": "openingAmount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "budgetConfigured",
+            "columnName": "budgetConfigured",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "activatedAt",
+            "columnName": "activatedAt",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_budget_periods_start",
+            "unique": true,
+            "columnNames": [
+              "start"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_budget_periods_start` ON `${TABLE_NAME}` (`start`)"
+          }
+        ]
+      },
+      {
+        "tableName": "daily_snapshots",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`periodId` TEXT NOT NULL, `date` TEXT NOT NULL, `startingAllowance` INTEGER NOT NULL, `createdAt` TEXT NOT NULL, `calculationRevision` INTEGER NOT NULL, PRIMARY KEY(`periodId`, `date`), FOREIGN KEY(`periodId`) REFERENCES `budget_periods`(`id`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
+        "fields": [
+          {
+            "fieldPath": "periodId",
+            "columnName": "periodId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startingAllowance",
+            "columnName": "startingAllowance",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "calculationRevision",
+            "columnName": "calculationRevision",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "periodId",
+            "date"
+          ]
+        },
+        "foreignKeys": [
+          {
+            "table": "budget_periods",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "periodId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "ledger_entries",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `type` TEXT NOT NULL, `amount` INTEGER NOT NULL, `date` TEXT NOT NULL, `periodId` TEXT NOT NULL, `occurredAt` TEXT NOT NULL, `createdAt` TEXT NOT NULL, `updatedAt` TEXT NOT NULL, `included` INTEGER NOT NULL, `merchant` TEXT NOT NULL, `category` TEXT NOT NULL, `note` TEXT NOT NULL, `linkedExpenseId` TEXT, `source` TEXT NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`periodId`) REFERENCES `budget_periods`(`id`) ON UPDATE NO ACTION ON DELETE RESTRICT , FOREIGN KEY(`linkedExpenseId`) REFERENCES `ledger_entries`(`id`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
+        "fields": [
+          {
+            "fieldPath": "entry.id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entry.type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entry.amount",
+            "columnName": "amount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entry.date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entry.periodId",
+            "columnName": "periodId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entry.occurredAt",
+            "columnName": "occurredAt",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entry.createdAt",
+            "columnName": "createdAt",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entry.updatedAt",
+            "columnName": "updatedAt",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entry.included",
+            "columnName": "included",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entry.merchant",
+            "columnName": "merchant",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entry.category",
+            "columnName": "category",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entry.note",
+            "columnName": "note",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entry.linkedExpenseId",
+            "columnName": "linkedExpenseId",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "entry.source",
+            "columnName": "source",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_ledger_entries_periodId",
+            "unique": false,
+            "columnNames": [
+              "periodId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ledger_entries_periodId` ON `${TABLE_NAME}` (`periodId`)"
+          },
+          {
+            "name": "index_ledger_entries_date",
+            "unique": false,
+            "columnNames": [
+              "date"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ledger_entries_date` ON `${TABLE_NAME}` (`date`)"
+          },
+          {
+            "name": "index_ledger_entries_linkedExpenseId",
+            "unique": false,
+            "columnNames": [
+              "linkedExpenseId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ledger_entries_linkedExpenseId` ON `${TABLE_NAME}` (`linkedExpenseId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "budget_periods",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "periodId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "ledger_entries",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "linkedExpenseId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "budget_adjustments",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `periodId` TEXT NOT NULL, `amount` INTEGER NOT NULL, `reason` TEXT NOT NULL, `createdAt` TEXT NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`periodId`) REFERENCES `budget_periods`(`id`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "periodId",
+            "columnName": "periodId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "amount",
+            "columnName": "amount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reason",
+            "columnName": "reason",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_budget_adjustments_periodId",
+            "unique": false,
+            "columnNames": [
+              "periodId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_budget_adjustments_periodId` ON `${TABLE_NAME}` (`periodId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "budget_periods",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "periodId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "entry_undo",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`singleton` INTEGER NOT NULL, `entryId` TEXT NOT NULL, `previous_id` TEXT, `previous_type` TEXT, `previous_amount` INTEGER, `previous_date` TEXT, `previous_periodId` TEXT, `previous_occurredAt` TEXT, `previous_createdAt` TEXT, `previous_updatedAt` TEXT, `previous_included` INTEGER, `previous_merchant` TEXT, `previous_category` TEXT, `previous_note` TEXT, `previous_linkedExpenseId` TEXT, `previous_source` TEXT, `next_id` TEXT, `next_type` TEXT, `next_amount` INTEGER, `next_date` TEXT, `next_periodId` TEXT, `next_occurredAt` TEXT, `next_createdAt` TEXT, `next_updatedAt` TEXT, `next_included` INTEGER, `next_merchant` TEXT, `next_category` TEXT, `next_note` TEXT, `next_linkedExpenseId` TEXT, `next_source` TEXT, PRIMARY KEY(`singleton`))",
+        "fields": [
+          {
+            "fieldPath": "singleton",
+            "columnName": "singleton",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entryId",
+            "columnName": "entryId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "previous.id",
+            "columnName": "previous_id",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "previous.type",
+            "columnName": "previous_type",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "previous.amount",
+            "columnName": "previous_amount",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "previous.date",
+            "columnName": "previous_date",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "previous.periodId",
+            "columnName": "previous_periodId",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "previous.occurredAt",
+            "columnName": "previous_occurredAt",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "previous.createdAt",
+            "columnName": "previous_createdAt",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "previous.updatedAt",
+            "columnName": "previous_updatedAt",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "previous.included",
+            "columnName": "previous_included",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "previous.merchant",
+            "columnName": "previous_merchant",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "previous.category",
+            "columnName": "previous_category",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "previous.note",
+            "columnName": "previous_note",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "previous.linkedExpenseId",
+            "columnName": "previous_linkedExpenseId",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "previous.source",
+            "columnName": "previous_source",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "next.id",
+            "columnName": "next_id",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "next.type",
+            "columnName": "next_type",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "next.amount",
+            "columnName": "next_amount",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "next.date",
+            "columnName": "next_date",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "next.periodId",
+            "columnName": "next_periodId",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "next.occurredAt",
+            "columnName": "next_occurredAt",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "next.createdAt",
+            "columnName": "next_createdAt",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "next.updatedAt",
+            "columnName": "next_updatedAt",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "next.included",
+            "columnName": "next_included",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "next.merchant",
+            "columnName": "next_merchant",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "next.category",
+            "columnName": "next_category",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "next.note",
+            "columnName": "next_note",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "next.linkedExpenseId",
+            "columnName": "next_linkedExpenseId",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "next.source",
+            "columnName": "next_source",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "singleton"
+          ]
+        }
+      },
+      {
+        "tableName": "import_receipts",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `importedAt` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "importedAt",
+            "columnName": "importedAt",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9f5bfd4320f4b9fea05da9ff36903cc9')"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0-debug",
+  "application_id": "dev.daybudget.debug",
+  "version_code": 2,
+  "min_sdk": 26,
+  "target_sdk": 37,
+  "apk": "DayBudget-debug.apk",
+  "bytes": 13015677,
+  "sha256": "e2d62be8f4f9a0e36744ac8337601595de496db1dbd73936ed98e01c62afb9d0",
+  "certificate_sha256": "ec21298f86530123742ca913659b5fdd8794e92157d5070fcf66575562a126c7",
+  "same_certificate_as_previous_apk": true,
+  "host": {
+    "tests": 116,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "native": {
+    "26": {
+      "api": 26,
+      "tests": 45,
+      "seconds": 53.856,
+      "failures": 0,
+      "crash_buffer_empty": true
+    },
+    "36": {
+      "api": 36,
+      "tests": 45,
+      "seconds": 69.801,
+      "failures": 0,
+      "crash_buffer_empty": true
+    }
+  },
+  "lint_debug": "No issues found.",
+  "lint_release": "No issues found.",
+  "static_16kb_alignment": "ZIP and all four ABI ELF libraries passed",
+  "runtime_16kb_tested": false,
+  "physical_phone_accessed": false,
+  "audible_alarm_verified": false
+}

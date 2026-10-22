@@ -1,0 +1,23 @@
+{
+  "settings": {
+    "captureEnabled": true,
+    "autoRecord": true,
+    "targetBudgetId": "legacy",
+    "enabledPackages": [
+      "com.phonepe.app"
+    ],
+    "spendingAlertsEnabled": true,
+    "overspendAlertsEnabled": true
+  },
+  "capture_count": 3,
+  "decision_count": 3,
+  "imported": 3,
+  "ignored": 0,
+  "alert_receipts": 4,
+  "amounts_paise": [
+    20000,
+    30000,
+    4000
+  ],
+  "raw_text_stored": false
+}

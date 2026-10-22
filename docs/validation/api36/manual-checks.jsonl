@@ -1,0 +1,8 @@
+{"time": "2026-10-22T17:23:49.151067+00:00", "expected_texts": ["₹400.00"], "passed": true}
+{"time": "2026-10-22T17:25:05.959432+00:00", "expected_texts": ["Allow notifications"], "passed": true}
+{"time": "2026-10-22T17:27:12.573820+00:00", "expected_texts": ["Android notification access is granted."], "passed": true}
+{"time": "2026-10-22T17:30:20.130676+00:00", "expected_texts": ["₹200.00"], "passed": true}
+{"time": "2026-10-22T17:30:47.070442+00:00", "expected_texts": ["−₹100.00"], "passed": true}
+{"time": "2026-10-22T17:38:00.831963+00:00", "expected_texts": ["₹550.00"], "passed": true}
+{"time": "2026-10-22T17:43:04.682620+00:00", "expected_texts": ["−₹150.00"], "passed": true}
+{"time": "2026-10-22T17:45:26.626425+00:00", "expected_texts": ["₹3,450.00"], "passed": true}

@@ -1,0 +1,28 @@
+{"time": "2026-10-22T17:09:31.024495+00:00", "expected_texts": ["₹240.00", "₹400.00", "− ₹200.00", "+ ₹40.00"], "passed": true}
+{"time": "2026-10-22T17:23:56.897708+00:00", "expected_texts": ["₹240.00", "₹400.00 allowance · ₹200.00 spent · ₹40.00 refunded"], "passed": true}
+{"time": "2026-10-22T17:24:04.194180+00:00", "expected_texts": ["₹4,340.00"], "passed": true}
+{"time": "2026-10-22T17:26:19.284360+00:00", "expected_texts": ["Travel check · switch budget", "₹100.00"], "passed": true}
+{"time": "2026-10-22T17:26:37.672451+00:00", "expected_texts": ["₹50.00", "₹100.00 allowance · ₹50.00 spent"], "passed": true}
+{"time": "2026-10-22T17:27:47.871399+00:00", "expected_texts": ["₹60.00", "₹100.00 allowance · ₹50.00 spent · ₹10.00 refunded"], "passed": true}
+{"time": "2026-10-22T17:28:12.063274+00:00", "expected_texts": ["Everyday", "₹4,340.00"], "passed": true}
+{"time": "2026-10-22T17:28:17.358177+00:00", "expected_texts": ["Everyday · switch budget", "₹240.00"], "passed": true}
+{"time": "2026-10-22T17:29:09.830495+00:00", "expected_texts": ["₹500.00"], "passed": true}
+{"time": "2026-10-22T17:29:30.121393+00:00", "expected_texts": ["₹400.00", "−₹100.00", "Emergency reserve"], "passed": true}
+{"time": "2026-10-22T17:29:35.003629+00:00", "expected_texts": ["₹240.00"], "passed": true}
+{"time": "2026-10-22T17:29:40.447518+00:00", "expected_texts": ["October essentials", "₹4,340.00"], "passed": true}
+{"time": "2026-10-22T17:30:11.200288+00:00", "expected_texts": ["Everyday · switch budget", "₹240.00"], "passed": true}
+{"time": "2026-10-22T17:34:43.925583+00:00", "expected_texts": ["Everyday · switch budget", "₹240.00"], "passed": true}
+{"time": "2026-10-22T17:34:48.600242+00:00", "expected_texts": ["Appearance", "Dark", "Light"], "passed": true}
+{"time": "2026-10-22T17:35:21.925254+00:00", "expected_texts": ["₹240.00", "Calendar", "Budgets", "Savings"], "passed": true}
+{"time": "2026-10-22T17:36:51.097790+00:00", "expected_texts": ["123.45"], "passed": true}
+{"time": "2026-10-22T17:36:54.853845+00:00", "expected_texts": ["123.45"], "passed": true}
+{"time": "2026-10-22T17:37:15.881195+00:00", "expected_texts": ["123.45"], "passed": true}
+{"time": "2026-10-22T17:37:50.222258+00:00", "expected_texts": ["Calendar", "Budgets", "Savings"], "passed": true}
+{"time": "2026-10-22T17:37:54.940531+00:00", "expected_texts": ["Everyday · switch budget", "₹240.00"], "passed": true}
+{"time": "2026-10-22T17:41:46.244049+00:00", "expected_texts": ["Everyday · switch budget", "₹240.00"], "passed": true}
+{"time": "2026-10-22T17:42:38.831858+00:00", "expected_texts": ["482.22", "482.23"], "passed": true}
+{"time": "2026-10-22T17:42:48.851391+00:00", "expected_texts": ["₹240.00"], "passed": true}
+{"time": "2026-10-22T17:45:11.417600+00:00", "expected_texts": ["₹240.00", "₹400.00 allowance · ₹200.00 spent · ₹40.00 refunded"], "passed": true}
+{"time": "2026-10-22T17:45:15.901876+00:00", "expected_texts": ["Everyday", "Travel check", "₹4,340.00", "₹960.00"], "passed": true}
+{"time": "2026-10-22T17:45:19.214641+00:00", "expected_texts": ["₹400.00", "Emergency reserve"], "passed": true}
+{"time": "2026-10-22T17:45:51.516862+00:00", "expected_texts": ["Withdrawal", "−₹100.00", "₹500.00"], "passed": true}
